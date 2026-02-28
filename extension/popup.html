@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Local LLM Assistant</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">Browser AI</p>
+        <h1>Local LLM Assistant</h1>
+        <p class="subtitle">Page-aware answers powered by your local Ollama model.</p>
+      </header>
+
+      <section class="card controls">
+        <div class="field-row">
+          <label class="field">
+            <span>Model</span>
+            <input id="model" type="text" placeholder="llama3.2" value="llama3.2" />
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Question</span>
+          <textarea id="query" rows="5" placeholder="Ask something about this page..."></textarea>
+        </label>
+
+        <div class="controls-footer">
+          <label class="toggle" for="useLiveWeb">
+            <input id="useLiveWeb" type="checkbox" checked />
+            <span class="toggle-track"></span>
+            <span class="toggle-label">Live web tools</span>
+          </label>
+
+          <button id="askBtn" class="primary">Ask</button>
+        </div>
+
+        <p id="status" class="status">Ready.</p>
+      </section>
+
+      <section class="card panel">
+        <h2>Answer</h2>
+        <pre id="answer">No response yet.</pre>
+      </section>
+
+      <section class="card panel">
+        <h2>Sources</h2>
+        <ul id="sources" class="list"></ul>
+      </section>
+
+      <section class="card panel">
+        <h2>Tool Calls</h2>
+        <ul id="tools" class="list"></ul>
+      </section>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

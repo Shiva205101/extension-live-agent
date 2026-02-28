@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Local LLM Sidebar</title>
+    <link rel="stylesheet" href="sidebar.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel">
+        <header class="hero">
+          <div>
+            <p class="brand">Local LLM</p>
+            <h1>Hi,</h1>
+            <p class="subtitle">How can I assist you today?</p>
+          </div>
+          <div class="signal" title="Backend status"></div>
+        </header>
+
+        <div class="chips">
+          <button class="chip" data-template="Summarize this page in key bullet points.">Summarize Page</button>
+          <button class="chip" data-template="Give me action items from this page.">Action Items</button>
+          <button class="chip" data-template="Extract important facts with dates and names.">Key Facts</button>
+          <button class="chip" data-template="Find possible errors or inconsistencies in this page.">Check Issues</button>
+        </div>
+
+        <section class="card config">
+          <label class="field">
+            <span>Conversation</span>
+            <select id="conversation"></select>
+          </label>
+
+          <div class="model-actions">
+            <button id="newChatBtn" class="secondary" type="button">New Chat</button>
+            <button id="deleteChatBtn" class="secondary danger" type="button">Delete Chat</button>
+          </div>
+
+          <label class="field">
+            <span>Provider</span>
+            <select id="provider">
+              <option value="ollama">Ollama (Local)</option>
+              <option value="openai">OpenAI (API Key)</option>
+              <option value="gemini">Gemini (API Key)</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Model</span>
+            <select id="model"></select>
+          </label>
+
+          <div class="model-actions">
+            <button id="refreshModelsBtn" class="secondary" type="button">Refresh Models</button>
+          </div>
+
+          <label class="toggle" for="useLiveWeb">
+            <input id="useLiveWeb" type="checkbox" checked />
+            <span class="track"></span>
+            <span>Use live web knowledge</span>
+          </label>
+
+          <p id="status" class="status">Ready.</p>
+        </section>
+
+        <section class="card answer">
+          <h2>Answer</h2>
+          <pre id="answer">No response yet.</pre>
+        </section>
+
+        <section class="card meta">
+          <h2>Sources</h2>
+          <ul id="sources" class="list"></ul>
+        </section>
+
+        <section class="card meta">
+          <h2>Chat History</h2>
+          <ul id="history" class="list"></ul>
+        </section>
+
+        <section class="card meta">
+          <h2>Tool Calls</h2>
+          <ul id="tools" class="list"></ul>
+        </section>
+      </section>
+
+      <footer class="composer">
+        <textarea id="query" rows="3" placeholder="Ask anything. Press Ctrl/Cmd + Enter to send."></textarea>
+        <button id="askBtn" class="send">Ask</button>
+      </footer>
+    </main>
+
+    <script src="sidebar.js"></script>
+  </body>
+</html>

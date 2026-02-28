@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Local LLM Live Assistant",
+  "description": "Chat with a local Ollama model using current page context and optional live web search.",
+  "version": "0.2.0",
+  "permissions": ["activeTab", "scripting", "storage", "tabs", "sidePanel"],
+  "host_permissions": [
+    "<all_urls>",
+    "http://localhost:8080/*"
+  ],
+  "action": {
+    "default_title": "Open Local LLM Sidebar"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidebar.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
